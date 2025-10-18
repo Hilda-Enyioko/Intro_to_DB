@@ -12,12 +12,18 @@ user=os.getenv("MYSQL_USER")
 password=os.getenv("MYSQL_PASSWORD")
 database=os.getenv("MYSQL_DATABASE")
 
+print("🔍 Checking environment variables...")
+print(f"Host: {host}")
+print(f"User: {user}")
+print(f"Password: {'*' * len(password) if password else None}")
+print(f"Database: {database}")
+
 try:
+    print("Connecting to mysql")
     mydb = mysql.connector.connect(
         host=host,
         user=user,
-        password=password,
-        database=database
+        password=password
     )
     
     if mydb.is_connected():
